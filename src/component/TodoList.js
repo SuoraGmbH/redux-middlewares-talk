@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { getAllTodos } from "../redux/todo/todoReducer";
-import { updateTodo } from "../redux/todo/actions";
+import { fetchTodos, updateTodo } from "../redux/todo/actions";
+import { useEffect } from "react";
 
 const TodoListItem = ({ todo }) => {
   const dispatch = useDispatch();
@@ -27,6 +28,11 @@ const TodoListItem = ({ todo }) => {
 
 const TodoList = () => {
   const todos = useSelector(getAllTodos);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchTodos());
+  }, [dispatch]);
 
   return (
     <ul>

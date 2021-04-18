@@ -1,4 +1,4 @@
-import { TODO_ADDED, TODO_UPDATED } from "./actions";
+import { TODO_ADDED, TODO_FETCHED, TODO_UPDATED } from "./actions";
 
 const initialState = {
   byId: {},
@@ -27,6 +27,18 @@ export const todoReducer = (state = initialState, action) => {
           ...state.byId,
           [action.payload.id]: action.payload,
         },
+      };
+    case TODO_FETCHED:
+      const byId = {};
+      action.payload.forEach(console.log);
+
+      action.payload.forEach((todo) => {
+        byId[todo.id] = todo;
+      });
+
+      return {
+        byId: byId,
+        allIds: Object.keys(byId),
       };
 
     default:
