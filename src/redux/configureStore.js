@@ -6,5 +6,10 @@ export const configureStore = () => {
   const composeEnhancers =
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-  return createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
+  return createStore(
+    reducer,
+    composeEnhancers(
+      applyMiddleware(thunk.withExtraArgument("http://localhost:3001"))
+    )
+  );
 };

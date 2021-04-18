@@ -1,7 +1,6 @@
-const baseUrl = "http://localhost:3001";
 export const TODO_ADDED = "Todo/Added";
 
-export const addTodo = (text) => async (dispatch) => {
+export const addTodo = (text) => async (dispatch, _, baseUrl) => {
   const response = await fetch(`${baseUrl}/todos`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -18,7 +17,7 @@ export const addTodo = (text) => async (dispatch) => {
 
 export const TODO_UPDATED = "Todo/Updated";
 
-export const updateTodo = (todo) => async (dispatch) => {
+export const updateTodo = (todo) => async (dispatch, _, baseUrl) => {
   const response = await fetch(`${baseUrl}/todos/${todo.id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
@@ -35,7 +34,7 @@ export const updateTodo = (todo) => async (dispatch) => {
 
 export const TODO_FETCHED = "Todo/Fetched";
 
-export const fetchTodos = () => async (dispatch) => {
+export const fetchTodos = () => async (dispatch, _, baseUrl) => {
   const response = await fetch(`${baseUrl}/todos`);
   const data = await response.json();
 
