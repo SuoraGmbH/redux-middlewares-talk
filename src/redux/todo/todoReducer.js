@@ -10,7 +10,7 @@ export const getAllTodos = (state) =>
 
 export const todoReducer = (state = initialState, action) => {
   switch (action.type) {
-    case TODO_ADDED:
+    case `${TODO_ADDED}_FULFILLED`:
       return {
         ...state,
         byId: {
@@ -20,7 +20,7 @@ export const todoReducer = (state = initialState, action) => {
         allIds: [...state.allIds, action.payload.id],
       };
 
-    case TODO_UPDATED:
+    case `${TODO_UPDATED}_FULFILLED`:
       return {
         ...state,
         byId: {
@@ -28,7 +28,7 @@ export const todoReducer = (state = initialState, action) => {
           [action.payload.id]: action.payload,
         },
       };
-    case TODO_FETCHED:
+    case `${TODO_FETCHED}_FULFILLED`:
       const byId = {};
       action.payload.forEach(console.log);
 
