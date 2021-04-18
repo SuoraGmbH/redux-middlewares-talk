@@ -1,46 +1,31 @@
 const baseUrl = "http://localhost:3001";
 export const TODO_ADDED = "Todo/Added";
 
-export const addTodo = (text) => async (dispatch) => {
-  const response = await fetch(`${baseUrl}/todos`, {
+export const addTodo = (text) => ({
+  type: TODO_ADDED,
+  apiPayload: {
+    url: "/todos",
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ text, completed: false }),
-  });
-
-  const todo = await response.json();
-
-  dispatch({
-    type: TODO_ADDED,
-    payload: todo,
-  });
-};
+    body: { text, completed: false },
+  },
+});
 
 export const TODO_UPDATED = "Todo/Updated";
 
-export const updateTodo = (todo) => async (dispatch) => {
-  const response = await fetch(`${baseUrl}/todos/${todo.id}`, {
+export const updateTodo = (todo) => ({
+  type: TODO_UPDATED,
+  apiPayload: {
+    url: `/todos/${todo.id}`,
     method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(todo),
-  });
-
-  const updatedTodo = await response.json();
-
-  dispatch({
-    type: TODO_UPDATED,
-    payload: updatedTodo,
-  });
-};
+    body: todo,
+  },
+});
 
 export const TODO_FETCHED = "Todo/Fetched";
 
-export const fetchTodos = () => async (dispatch) => {
-  const response = await fetch(`${baseUrl}/todos`);
-  const data = await response.json();
-
-  dispatch({
-    type: TODO_FETCHED,
-    payload: data,
-  });
-};
+export const fetchTodos = () => ({
+  type: TODO_FETCHED,
+  apiPayload: {
+    url: "/todos",
+  },
+});
