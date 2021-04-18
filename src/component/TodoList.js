@@ -8,7 +8,7 @@ const TodoListItem = ({ todo }) => {
     dispatch(
       updateTodo({
         ...todo,
-        done: !todo.done,
+        completed: !todo.completed,
       })
     );
   };
@@ -18,7 +18,7 @@ const TodoListItem = ({ todo }) => {
       <input
         onChange={handleCheckboxChange}
         type="checkbox"
-        checked={Boolean(todo.done)}
+        checked={Boolean(todo.completed)}
       />{" "}
       {todo.text}
     </li>
