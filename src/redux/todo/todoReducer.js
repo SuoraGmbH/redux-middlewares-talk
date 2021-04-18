@@ -1,4 +1,4 @@
-import { TODO_ADD, TODO_UPDATE } from "./actions";
+import { TODO_ADDED, TODO_UPDATED } from "./actions";
 
 const initialState = {
   byId: {},
@@ -10,7 +10,7 @@ export const getAllTodos = (state) =>
 
 export const todoReducer = (state = initialState, action) => {
   switch (action.type) {
-    case TODO_ADD:
+    case TODO_ADDED:
       return {
         ...state,
         byId: {
@@ -20,7 +20,7 @@ export const todoReducer = (state = initialState, action) => {
         allIds: [...state.allIds, action.payload.id],
       };
 
-    case TODO_UPDATE:
+    case TODO_UPDATED:
       return {
         ...state,
         byId: {
