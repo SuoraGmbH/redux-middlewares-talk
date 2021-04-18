@@ -1,8 +1,8 @@
 import TodoList from "./TodoList";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import { configureStore } from "./redux/configureStore";
 
-const store = createStore(() => {});
+const store = configureStore();
 
 function App() {
   return (
