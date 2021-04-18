@@ -1,4 +1,4 @@
-import TodoList from "./TodoList";
+import TodoList from "./component/TodoList";
 import { Provider } from "react-redux";
 import { configureStore } from "./redux/configureStore";
 
