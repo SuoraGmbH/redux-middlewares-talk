@@ -1,6 +1,6 @@
-const baseUrl = "http://localhost:3001";
-
-export const middleware = (storeAPI) => (next) => async (action) => {
+export const middleware = ({ baseUrl }) => (storeAPI) => (next) => async (
+  action
+) => {
   if (!action.apiPayload) {
     return next(action);
   }
