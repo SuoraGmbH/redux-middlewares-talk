@@ -1,4 +1,3 @@
-const baseUrl = "http://localhost:3001";
 export const TODO_ADDED = "Todo/Added";
 
 export const addTodo = (text) => ({
